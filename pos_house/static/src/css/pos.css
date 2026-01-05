@@ -1,0 +1,66 @@
+
+.house-balance{
+    font-size: 15px;
+    margin-left: 20px;
+    float: left;
+    padding: 10px;
+    max-width: 216px;
+    text-align: right;
+    color: #6EC89B;
+    border-radius: 3px;
+    background: rgba(110, 200, 155, 0.17);
+}
+.pos .order .summary .house-balance-negative{
+    color: #C86E6E;
+    background: rgba(200, 110, 110, 0.17);
+}
+.pos .order .summary .house-balance-total {
+    font-size: 15px;
+    border-top: solid 2px;
+    text-align: right;
+    padding-top: 4px;
+    margin-top: 4px;
+    background: rgba(110, 200, 155, 0.17);
+}
+
+.house .subtitle{
+    font-size: 15px;
+    text-align: center;
+    background: rgba(110, 200, 155, 0.17);
+}
+
+.house .title .house-balance-title {
+    font-size: 20px;
+    text-align: left;
+    background: rgba(110, 200, 155, 0.17);
+}
+
+.house-balance-title {
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: left;
+    color: #0d47a1;
+}
+.house-balance-won {
+
+}
+.house-balance-spent {
+    font-size: 15px;
+    text-align: center;
+    color: #C86E6E;
+    background: rgba(200, 110, 110, 0.17);
+}
+
+.house-balance-current {
+    font-size: 15px;
+    text-align: right;
+    font-weight: bold;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: solid 2px;
+
+
+}
+.house-balance-bg {
+    background: #f4ff81;
+}

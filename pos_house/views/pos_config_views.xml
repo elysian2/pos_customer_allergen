@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="pos_config_view_form_inherit_pos_house" model="ir.ui.view">
+        <field name="name">pos.config.form.inherit.pos.house</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <div id="restaurant_on_create" position="after">
+                <div class="row mt16 o_settings_container" id="pos_miclub_house_account">
+                    <setting id="pos_miclub">
+                        <div id="barcode_scanner" class="col-12 col-lg-6 o_setting_box">
+                            <span class="o_form_label">MiClub location ID</span>
+                            <div class="text-muted">
+                                Location ID for POS in MiClub
+                            </div>
+                            <div class="content-group mt16 row">
+                                <label for="miclub_location_id" string="MiClub POS location ID" class="col-lg-12 o_light_label"/>
+                                <field name="miclub_location_id"/>
+                            </div>
+                        </div>
+                    </setting>
+                    <setting id="house_account">
+                        <span class="o_form_label">House Account Setup</span>
+                        <div class="row mt16">
+                            <label for="house_id" string="House Account Rules" class="col-lg-6 o_light_label"/>
+                            <field name="house_id"/>
+                        </div>
+                        <div class="row mt16">
+                            <label for="house_account_house_id" string="Account for House" class="col-lg-6 o_light_label"/>
+                            <field name="house_account_house_id"/>
+                        </div>
+                        <div class="row mt16">
+                            <label string="Prize Account Product" for="prize_product_id" class="col-lg-6 o_light_label"/>
+                            <field name="prize_product_id"/>
+                        </div>
+                    </setting>
+                    <setting id="house_rule">
+                        <div class="row mt16 o_setting_box">
+                            <span class="o_form_label">Account Rules</span>
+                            <div class="text-muted">
+                                Account specific rules
+                            </div>
+                            <field name="account_rule" readonly="0" style="width:100%">
+                                <tree string="" editable="bottom">
+                                    <field name="account_type" />
+                                    <field name="use_for_purchase" />
+                                    <field name="top_up" />
+                                    <field name="subscription_payment" />
+                                </tree>
+                            </field>
+                        </div>
+                    </setting>
+                </div>
+            </div>
+        </field>
+    </record>
+
+</odoo>

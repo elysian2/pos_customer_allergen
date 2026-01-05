@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_house_program,house.program.user,model_house_accounts,point_of_sale.group_pos_user,1,0,0,0
+access_house_program_manager,house.program.manager,model_house_accounts,point_of_sale.group_pos_manager,1,1,1,1
+access_house_rule,house.rule.user,model_house_rule,point_of_sale.group_pos_user,1,0,0,0
+access_house_rule_manager,house.rule.manager,model_house_rule,point_of_sale.group_pos_manager,1,1,1,1
+access_house_reward,house.reward.user,model_house_reward,point_of_sale.group_pos_user,1,0,0,0
+access_house_reward_manager,house.reward.manager,model_house_reward,base.group_user,1,1,1,1
+access_house_member_account,house.reward.manager,model_member_account,base.group_user,1,1,1,1
+access_house_account_rule,house.reward.manager,model_account_rule,base.group_user,1,1,1,1
+access_house_account_type,house.reward.manager,model_account_type,base.group_user,1,1,1,1

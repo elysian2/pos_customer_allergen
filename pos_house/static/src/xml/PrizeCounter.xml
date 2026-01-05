@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="PrizeCounter">
+        <t t-if="order and get_spent_prize() != 0">
+            <div class='house-balance'>
+                <div class='house-balance-title'>
+                    PRIZE
+                </div>
+                <div class='house-balance-current'>
+                    <span class='value'> $  <t t-esc='get_prize_current()' /></span>
+                </div>
+                <div class="house-balance-spent">
+                    Allocated
+                    <span class='value'> $ <t t-esc='get_spent_prize()'/></span>
+                </div>
+                <div class='house-balance-total'>
+                    Remaining
+                    <span class='value'>  $  <t t-esc='get_prize_total()' /></span>
+                </div>
+            </div>
+        </t>
+        <t t-elif="get_prize_current() != 0">
+            <div class='house-balance'>
+                <div class='house-balance-title'>
+                    PRIZE
+                </div>
+                <div class='house-balance-current'>
+                    <span class='value'> $  <t t-esc='get_prize_current()' /></span>
+                </div>
+            </div>
+        </t>
+        <t t-else="">
+            <div></div>
+        </t>
+    </t>
+
+ </templates>

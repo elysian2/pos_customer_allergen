@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+     <t t-name="PartnerLine" t-inherit="point_of_sale.PartnerLine" t-inherit-mode="extension">
+        <xpath expr="//tr" position="inside">
+            <td t-if="env.services.pos.config.module_pos_house">
+                <t t-esc='props.partner.house_balance or 0' />
+                <span t-if="highlight"><br/></span>
+            </td>
+             <td t-if="env.services.pos.config.module_pos_house">
+                <t t-esc='props.partner.bucket_count or 0' />
+                <span t-if="highlight"><br/></span>
+            </td>
+        </xpath>
+    </t>
+
+    <t t-name="PartnerListScreen" t-inherit="point_of_sale.PartnerListScreen" t-inherit-mode="extension">
+        <xpath expr="//tr" position="inside">
+            <th t-if="pos.config.module_pos_house">House Balance</th>
+            <th t-if="pos.config.module_pos_house">Bucket Count</th>
+        </xpath>
+    </t>
+
+<!--    <t t-name="OrderSummary" t-inherit="point_of_sale.OrderSummary" t-inherit-mode="extension" owl="1">-->
+<!--        <xpath expr="//div[hasclass('order-summary')]" position="before">-->
+<!--            <HouseCounter t-if="env.pos.house and 0" />-->
+<!--            <PrizeCounter t-if="env.pos.house and 0" />-->
+<!--        </xpath>-->
+<!--    </t>-->
+
+    <t t-name="OrderWidget" t-inherit="point_of_sale.OrderWidget" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('order-container')]" position="inside">
+            <div class="pos-counter" style="display:flex;">
+                <HouseCounter t-if="env.services.pos.house"/>
+                <PrizeCounter t-if="env.services.pos.house"/>
+            </div>
+        </xpath>
+    </t>
+
+    <t t-name="PartnerDetailsEdit" t-inherit="point_of_sale.PartnerDetailsEdit" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('partner-details-box')]" position="inside">
+            <div class="partner-detail col" t-if="pos.config.module_pos_house">
+                <label class="form-label label" for="house_balance">House Balance</label>
+                <input class="detail form-control" name="house_balance"
+                       t-model="changes.house_balance" id="house_balance"
+                       placeholder="0"
+                       t-att="{'disabled': isFieldCommercialAndPartnerIsChild(house_balance)}"
+                       t-att-class="{'border-danger': missingFields.includes(house_balance)}"/>
+<!--                       t-att-readonly="isNotManager"/>-->
+            </div>
+            <div class="partner-detail col" t-if="pos.config.module_pos_house">
+                <label class="form-label label" for="bucket_count">Bucket Count</label>
+                <input class="detail form-control" name="bucket_count"
+                       t-model="changes.bucket_count" id="bucket_count"
+                       placeholder="0"
+                       t-att="{'disabled': isFieldCommercialAndPartnerIsChild(bucket_count)}"
+                       t-att-class="{'border-danger': missingFields.includes(bucket_count)}"/>
+<!--                       t-att-readonly="isNotManager"/>-->
+            </div>
+        </xpath>
+    </t>
+
+     <t t-name="Orderline" t-inherit="point_of_sale.Orderline" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('product-name')]" position="inside">
+            <t t-if="props.line.exclude_from_prize">
+                    **
+            </t>
+        </xpath>
+    </t>
+
+    <t t-name="ProductCard" t-inherit="point_of_sale.ProductCard" t-inherit-mode="extension">
+    	<xpath expr="//article" position="attributes">
+            <attribute name="t-attf-style">display:{{props.pos_fee_item ? 'none':'inline-block'}}</attribute>
+    	</xpath>
+    </t>
+
+    <t t-name="ClosePosPopup" t-inherit="point_of_sale.ClosePosPopup" t-inherit-mode="extension">
+    	<xpath expr="//footer[hasclass('footer')]/div[hasclass('modal-footer-left')]" position="inside">
+             <button t-if="pos.config.iface_cashdrawer" class="button btn btn-lg btn-secondary js_cashdrawer" t-on-click="openCashbox">
+                 <i class="fa fa-archive" /> Open Cashbox
+             </button>
+    	</xpath>
+    </t>
+
+ </templates>
