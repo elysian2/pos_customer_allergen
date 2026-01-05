@@ -14,7 +14,9 @@ export class AllergenWidget extends Component {
     }
     getCustomerAllergenInfo() {
         const order = this.pos.get_order();
-        return order?.get_partner()?.pos_allergen_note || "";
+        let note = order.pos_allergen_note;
+
+        return note;//order?.get_partner()?.pos_allergen_note || "";
     }
     get order() {
         return this.pos.get_order();

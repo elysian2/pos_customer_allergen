@@ -1,0 +1,12 @@
+<t t-name="pos_customer_allergen_gold.AllergenWidget">
+    <div class="customer-allergen-info">
+        <t t-if="allergenInfo.allergenImage">
+            <img t-att-src="allergenInfo.allergenImage" class="customer-allergen-image"/>
+        </t>
+        <t t-if="allergenInfo.allergenNote">
+            <div class="customer-allergen-note">
+                <t t-esc="allergenInfo.allergenNote"/>
+            </div>
+        </t>
+    </div>
+</t>
