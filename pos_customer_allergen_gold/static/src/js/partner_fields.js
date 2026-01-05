@@ -1,11 +1,14 @@
 /** @odoo-module **/
 
 import { patch } from "@web/core/utils/patch";
-import { Partner } from "@point_of_sale/app/store/models";
+import { registry } from "@web/core/registry";
+
+const posModels = registry.category("pos_models");
+const Partner = posModels.get("res.partner");
 
 patch(Partner.prototype, {
     setup() {
         super.setup(...arguments);
-        this.pos_allergen_info = this.pos_allergen_info || "";
-    }
+        this.pos_allergen_note = this.pos_allergen_note || "";
+    },
 });

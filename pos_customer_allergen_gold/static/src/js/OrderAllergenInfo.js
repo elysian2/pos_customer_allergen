@@ -1,28 +1,22 @@
 /** @odoo-module **/
 
-// ✅ Add this line at the very top of the file
-console.warn("✅ POS CUSTOMER ALLERGEN GOLD JS LOADED");
+//import { OrderSummary } from "@point_of_sale/app/screens/product_screen/order_summary/order_summary";
+import { Order, Orderline, Product } from "@point_of_sale/app/store/models";
+import { patch } from "@web/core/utils/patch";
 
-import { OrderWidget } from 'point_of_sale.OrderWidget';
-import { Registries } from 'point_of_sale.Registries';
+console.warn("✅ OrderAllergenInfo loaded");
 
-export const OrderAllergenInfo = (OrderWidget) =>
-    class extends OrderWidget {
+patch(Order.prototype, {
+    get allergenInfo() {
+        const order = this.env.services.pos.get_order();
+        const partner = order?.get_partner();
+        return partner?.pos_allergen_note || "";
+    },
 
-        get partner() {
-            return this.props.order?.get_partner();
-        }
-
-        get allergenInfo() {
-            return this.partner?.pos_allergen_info;
-        }
-
-        get showAllergen() {
-            return (
-                this.env.pos.config.show_customer_allergen &&
-                this.allergenInfo
-            );
-        }
-    };
-
-Registries.Component.extend(OrderWidget, OrderAllergenInfo);
+    get showAllergen() {
+        return Boolean(
+            this.env.services.pos.config.show_customer_allergen &&
+            this.allergenInfo
+        );
+    },
+});
