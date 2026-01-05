@@ -1,0 +1,14 @@
+<odoo>
+    <record id='partner_pos_allergen' model='ir.ui.view'>
+        <field name='name'>partner.pos.allergen</field>
+        <field name='model'>res.partner</field>
+        <field name='inherit_id' ref='base.view_partner_form'/>
+        <field name='arch' type='xml'>
+            <xpath expr='//sheet/notebook' position='inside'>
+                <page string='POS'>
+                    <field name='pos_allergen_note' groups='base.group_system'/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
