@@ -1,0 +1,8 @@
+
+<t t-name="AllergenReceiptNote">
+  <t t-if="receipt.allergen_note">
+    <div style="color:red;font-weight:bold;">
+      FSANZ ALLERGY WARNING: <t t-esc="receipt.allergen_note"/>
+    </div>
+  </t>
+</t>

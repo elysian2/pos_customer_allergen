@@ -1,0 +1,13 @@
+
+<odoo>
+  <record id="view_pos_allergen_tree" model="ir.ui.view">
+    <field name="name">pos.allergen.tree</field>
+    <field name="model">pos.allergen</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="fsanz_code"/>
+      </tree>
+    </field>
+  </record>
+</odoo>

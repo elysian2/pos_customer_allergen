@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="AllergenWidget">
+         <img t-if="getCustomerImage()"
+                 t-att-src="'data:image/png;base64,' + getCustomerImage()"
+                 class="rounded-circle"
+                 style="width:32px;height:32px"/>
+        <div t-if="getCustomerAllergenInfo()" class="alert alert-danger">
+          ⚠️ <t t-esc="getCustomerAllergenInfo()"/>
+        </div>
+    </t>
+</templates>

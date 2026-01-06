@@ -1,0 +1,1 @@
+from . import pos_allergen, res_partner, product_template, pos_session
